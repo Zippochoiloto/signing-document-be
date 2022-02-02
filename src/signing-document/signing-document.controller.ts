@@ -25,7 +25,7 @@ export class SigningDocumentController {
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   uploadFile(@UploadedFile() file: Express.Multer.File, @Request() req) {
     return this.documentService.createDoc(file.originalname, req.user.username);
   }

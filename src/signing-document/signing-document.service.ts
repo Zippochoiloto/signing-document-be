@@ -25,7 +25,7 @@ export class SigningDocumentService {
       DocName: fileName,
       Status: 'Pending',
       Owner: owner,
-      Assigner: '',
+      Assigner: 'approver@gmail.com',
     };
     const result = this.SigningDocModel.create(newDoc);
     return result;
