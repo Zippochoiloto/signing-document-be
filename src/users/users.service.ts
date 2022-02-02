@@ -7,13 +7,13 @@ import { User, UserDocument } from './schemas/user.schema';
 
 @Injectable()
 export class UsersService {
-    constructor(
-        @InjectModel(User.name) private UserModel: Model<UserDocument>,
-        ) {}
+  constructor(@InjectModel(User.name) private UserModel: Model<UserDocument>) {}
 
-  async getUser(username: string): Promise<User> {
-      return this.UserModel.findOne(
-          {Email: username}
-      ).exec()
+  async getUser(username: string, pass: string): Promise<User> {
+    return this.UserModel.findOne({ Email: username, Password: pass }).exec();
+  }
+
+  async getUserByName(username: string): Promise<User> {
+    return this.UserModel.findOne({ Email: username }).exec();
   }
 }
